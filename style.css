@@ -147,11 +147,53 @@ h2 {
   justify-content: space-between;
   padding: 20px 5px;
   font-size: 20px;
+.finalizar {
+  width: 100%;
+  background: #d94f8a;
+  font-size: 17px;
+  padding: 
+    .tela-carrinho {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff7fb;
+  z-index: 9999;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.cabecalho-carrinho {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.item-carrinho {
+  background: white;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-carrinho {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  font-size: 20px;
 }
 
 .finalizar {
   width: 100%;
   background: #d94f8a;
-  font-size: 17px;
+  color: white;
   padding: 15px;
+  border: none;
+  border-radius: 25px;
 }
+  
