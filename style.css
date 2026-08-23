@@ -122,3 +122,36 @@ h2 {
 .menu button:first-child {
   color: #d94f8a;
 }
+.tela-carrinho {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #fff7fb;
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.cabecalho-carrinho {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.cabecalho-carrinho button {
+  background: #f3a6c7;
+}
+
+.total-carrinho {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 5px;
+  font-size: 20px;
+}
+
+.finalizar {
+  width: 100%;
+  background: #d94f8a;
+  font-size: 17px;
+  padding: 15px;
+}
