@@ -6,46 +6,90 @@
   <title>Ed Store</title>
   <link rel="stylesheet" href="style.css">
 </head>
-  
 
 <body>
 
-  <h1>🛍️ ED STORE</h1>
+  <header>
+    <h1>🛍️ ED STORE</h1>
+    <p>Tudo o que combina contigo ✨</p>
 
-  <p>Tudo o que combina contigo.</p>
+    <input
+      type="text"
+      placeholder="🔎 Pesquisar produtos..."
+    >
+  </header>
 
-  <input
-    type="text"
-    placeholder="🔎 Pesquisar produtos..."
-  >
+  <section class="categorias">
+    <h2>Categorias</h2>
 
-  <h2>Categorias</h2>
+    <button>👗 Moda</button>
+    <button>💄 Beleza</button>
+    <button>👟 Calçados</button>
+    <button>👜 Acessórios</button>
+  </section>
 
-  <button>👗 Moda</button>
-  <button>💄 Beleza</button>
-  <button>👟 Calçados</button>
-  <button>👜 Acessórios</button>
+  <section class="produtos">
 
-  <h2>✨ Em destaque</h2>
+    <h2>✨ Produtos em destaque</h2>
 
-  <div>
-    <h3>Produto 1</h3>
-    <p>Preço: 5.000 Kz</p>
-    <button>🛒 Adicionar ao carrinho</button>
-  </div>
+    <div class="produto">
 
-  <div>
-    <h3>Produto 2</h3>
-    <p>Preço: 8.000 Kz</p>
-    <button>🛒 Adicionar ao carrinho</button>
-  </div>
+      <div class="foto-produto">
+        👜
+      </div>
 
-  <hr>
+      <h3>Bolsa Elegante</h3>
 
-  <button>🏠 Início</button>
-  <button>🔍 Pesquisar</button>
-  <button>🛒 Carrinho</button>
-  <button>👤 Perfil</button>
+      <p class="preco">15.000 Kz</p>
+
+      <button>❤️</button>
+      <button>🛒 Adicionar</button>
+
+    </div>
+
+    <div class="produto">
+
+      <div class="foto-produto">
+        👗
+      </div>
+
+      <h3>Vestido Elegante</h3>
+
+      <p class="preco">25.000 Kz</p>
+
+      <button>❤️</button>
+      <button>🛒 Adicionar</button>
+
+    </div>
+
+    <div class="produto">
+
+      <div class="foto-produto">
+        👟
+      </div>
+
+      <h3>Ténis Fashion</h3>
+
+      <p class="preco">30.000 Kz</p>
+
+      <button>❤️</button>
+      <button>🛒 Adicionar</button>
+
+    </div>
+
+  </section>
+
+  <nav class="menu">
+
+    <button>🏠<br>Início</button>
+
+    <button>🔎<br>Pesquisar</button>
+
+    <button>🛒<br>Carrinho</button>
+
+    <button>👤<br>Perfil</button>
+
+  </nav>
 
 </body>
 </html>
