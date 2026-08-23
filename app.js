@@ -6,45 +6,65 @@ function adicionarAoCarrinho(nome, preco) {
     preco: preco
   });
 
-  alert("🛒 " + nome + " foi adicionado ao carrinho!");
-
-  atualizarContador();
+  atualizarCarrinho();
 }
 
-function atualizarContador() {
+function atualizarCarrinho() {
   const contador = document.getElementById("contadorCarrinho");
+  const lista = document.getElementById("listaCarrinho");
+  const totalElemento = document.getElementById("totalCarrinho");
 
   if (contador) {
     contador.textContent = carrinho.length;
   }
-}
 
-function abrirCarrinho() {
+  if (!lista || !totalElemento) return;
 
   if (carrinho.length === 0) {
-    alert("🛒 O carrinho está vazio.");
+    lista.innerHTML = "<p>O seu carrinho está vazio.</p>";
+    totalElemento.textContent = "0 Kz";
     return;
   }
 
   let total = 0;
-  let mensagem = "🛒 SEU CARRINHO\n\n";
 
-  carrinho.forEach(function(produto) {
+  lista.innerHTML = "";
 
-    mensagem +=
-      "• " +
-      produto.nome +
-      " — " +
-      produto.preco +
-      " Kz\n";
-
+  carrinho.forEach(function(produto, index) {
     total += produto.preco;
+
+    const item = document.createElement("div");
+
+    item.className = "item-carrinho";
+
+    item.innerHTML = `
+      <div>
+        <strong>${produto.nome}</strong>
+        <p>${produto.preco.toLocaleString("pt-PT")} Kz</p>
+      </div>
+
+      <button onclick="removerDoCarrinho(${index})">
+        🗑️
+      </button>
+    `;
+
+    lista.appendChild(item);
   });
 
-  mensagem +=
-    "\n💰 TOTAL: " +
-    total +
-    " Kz";
+  totalElemento.textContent =
+    total.toLocaleString("pt-PT") + " Kz";
+}
 
-  alert(mensagem);
+function removerDoCarrinho(index) {
+  carrinho.splice(index, 1);
+  atualizarCarrinho();
+}
+
+function abrirCarrinho() {
+  document.getElementById("telaCarrinho").style.display = "block";
+  atualizarCarrinho();
+}
+
+function fecharCarrinho() {
+  document.getElementById("telaCarrinho").style.display = "none";
 }
