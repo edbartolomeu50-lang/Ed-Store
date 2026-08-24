@@ -121,4 +121,24 @@ function mostrarTodos() {
     produto.style.display = "block";
   });
 }
+function filtrarProdutos(categoria) {
+  const produtos = document.querySelectorAll(".produto");
 
+  for (let i = 0; i < produtos.length; i++) {
+    const categoriaProduto = produtos[i].getAttribute("data-categoria");
+
+    if (categoriaProduto === categoria) {
+      produtos[i].style.display = "block";
+    } else {
+      produtos[i].style.display = "none";
+    }
+  }
+}
+
+function mostrarTodos() {
+  const produtos = document.querySelectorAll(".produto");
+
+  for (let i = 0; i < produtos.length; i++) {
+    produtos[i].style.display = "block";
+  }
+}
