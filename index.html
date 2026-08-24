@@ -1,149 +1,100 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ed Store</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+let carrinho = [];
 
-<body>
+function adicionarAoCarrinho(nome, preco) {
+  carrinho.push({
+    nome: nome,
+    preco: preco
+  });
 
-  <header>
-    <h1>🛍️ ED STORE</h1>
-    <p>Tudo o que combina contigo ✨</p>
+  atualizarCarrinho();
+}
 
-    <input
-      type="text"
-      placeholder="🔎 Pesquisar produtos..."
-    >
-  </header>
+function atualizarCarrinho() {
+  const contador = document.getElementById("contadorCarrinho");
+  const lista = document.getElementById("listaCarrinho");
+  const totalElemento = document.getElementById("totalCarrinho");
 
-  <section class="categorias">
-    <h2>Categorias</h2>
+  if (contador) {
+    contador.textContent = carrinho.length;
+  }
 
-    <<button onclick="filtrarProdutos('moda')">👗 Moda</button>
+  if (!lista || !totalElemento) {
+    return;
+  }
 
-<button onclick="filtrarProdutos('beleza')">💄 Beleza</button>
+  if (carrinho.length === 0) {
+    lista.innerHTML = "<p>O seu carrinho está vazio.</p>";
+    totalElemento.textContent = "0 Kz";
+    return;
+  }
 
-<button onclick="filtrarProdutos('calcados')">👟 Calçados</button>
+  let total = 0;
 
-<button onclick="filtrarProdutos('acessorios')">👜 Acessórios</button>
+  lista.innerHTML = "";
 
-<button onclick="mostrarTodos()">✨ Todos</button>
-  </section>
+  carrinho.forEach(function(produto, index) {
+    total += produto.preco;
 
-  <section class="produtos">
+    const item = document.createElement("div");
 
-    <h2>✨ Produtos em destaque</h2>
+    item.className = "item-carrinho";
 
-    <div class="produto" data-categoria="acessorios">
-
-     <div class="foto-produto">
-  <img
-    src="https://images.pexels.com/photos/22434759/pexels-photo-22434759.jpeg?auto=compress&cs=tinysrgb&w=800"
-    alt="Bolsa Elegante"
-  >
-</div>
-        👜
+    item.innerHTML = `
+      <div>
+        <strong>${produto.nome}</strong>
+        <p>${produto.preco.toLocaleString("pt-PT")} Kz</p>
       </div>
 
-      <button onclick="adicionarAoCarrinho('Bolsa Elegante', 15000)">
-  🛒 Adicionar
-</button>
+      <button onclick="removerDoCarrinho(${index})">
+        🗑️
+      </button>
+    `;
 
-      <p class="preco">15.000 Kz</p>
+    lista.appendChild(item);
+  });
 
-      <button>❤️</<button onclick="adicionarAoCarrinho('Bolsa Elegante', 15000)">
-  🛒 Adicionar
-</button>
+  totalElemento.textContent =
+    total.toLocaleString("pt-PT") + " Kz";
+}
 
-    </div>
+function removerDoCarrinho(index) {
+  carrinho.splice(index, 1);
+  atualizarCarrinho();
+}
 
-    <div class="produto">
+function abrirCarrinho() {
+  const tela = document.getElementById("telaCarrinho");
 
-      <div class="foto-produto">
-  <img
-    src="https://images.pexels.com/photos/985635/pexels-photo-985635.jpeg?auto=compress&cs=tinysrgb&w=800"
-    alt="Vestido Elegante"
-  >
-</div>
-      </div>
+  if (tela) {
+    tela.style.display = "block";
+    atualizarCarrinho();
+  }
+}
 
-      <h3>Vestido Elegante</h3>
+function fecharCarrinho() {
+  const tela = document.getElementById("telaCarrinho");
 
-      <p class="preco">25.000 Kz</p>
+  if (tela) {
+    tela.style.display = "none";
+  }
+}
 
-      <button>❤️</button>
-      <button onclick="adicionarAoCarrinho('Vestido Elegante', 25000)">
-  🛒 Adicionar
-</button>
+function filtrarProdutos(categoria) {
+  const produtos = document.querySelectorAll(".produto");
 
-    </div>
+  produtos.forEach(function(produto) {
+    if (produto.dataset.categoria === categoria) {
+      produto.style.display = "block";
+    } else {
+      produto.style.display = "none";
+    }
+  });
+}
 
-      <div class="produto" data-categoria="moda">
-    
+function mostrarTodos() {
+  const produtos = document.querySelectorAll(".produto");
 
-      <div class="foto-produto">
-  <img
-    src="https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=800"
-    alt="Ténis Fashion"
-  >
-</div>
-      </div>
-
-      <h3>Ténis Fashion</h3>
-
-      <p class="preco">30.000 Kz</p>
-
-      <button>❤️</button>
-      <button onclick="adicionarAoCarrinho('Ténis Fashion', 30000)">
-  🛒 Adicionar
-</button>
-
-    </div>
-
-  </section>
-
-  <nav class="menu">
-
-    <button>🏠<br>Início</button>
-
-    <button>🔎<br>Pesquisar</button>
-
-    <button onclick="abrirCarrinho()">
-  🛒<br>
-  Carrinho
-  <span id="contadorCarrinho">0</span>
-</button>
-
-    <button>👤<br>Perfil</button>
-
-  </nav>
-  <div id="telaCarrinho" class="tela-carrinho">
-
-  <div class="cabecalho-carrinho">
-    <button onclick="fecharCarrinho()">←</button>
-    <h2>🛒 Meu Carrinho</h2>
-  </div>
-
-  <div id="listaCarrinho">
-    <p>O seu carrinho está vazio.</p>
-  </div>
-
-  <div class="total-carrinho">
-    <strong>Total</strong>
-    <strong id="totalCarrinho">0 Kz</strong>
-  </div>
-
-  <button class="finalizar">
-    💳 FINALIZAR COMPRA
-  </button>
-
-</div>
-  
-  <script src="app.js"></script>
-
-
-</body>
-</html>
+  produtos.forEach(function(produto) {
+    produto.style.display = "block";
+  });
+}
