@@ -18,7 +18,9 @@ function atualizarCarrinho() {
     contador.textContent = carrinho.length;
   }
 
-  if (!lista || !totalElemento) return;
+  if (!lista || !totalElemento) {
+    return;
+  }
 
   if (carrinho.length === 0) {
     lista.innerHTML = "<p>O seu carrinho está vazio.</p>";
@@ -61,84 +63,38 @@ function removerDoCarrinho(index) {
 }
 
 function abrirCarrinho() {
-  document.getElementById("telaCarrinho").style.display = "block";
-  atualizarCarrinho();
+  const tela = document.getElementById("telaCarrinho");
+
+  if (tela) {
+    tela.style.display = "block";
+    atualizarCarrinho();
+  }
 }
 
 function fecharCarrinho() {
-  document.getElementById("telaCarrinho").style.display = "function filtrarProdutos(categoria) {
-  const produtos = document.querySelectorAll(".produto");
+  const tela = document.getElementById("telaCarrinho");
 
-  produtos.forEach(function(produto) {
-    if (produto.dataset.categoria === categoria) {
-      produto.style.display = "block";
-    } else {
-      produto.style.display = "none";
-    }
-  });
+  if (tela) {
+    tela.style.display = "none";
+  }
 }
 
-function mostrarTodos() {
-  const produtos = document.querySelectorAll(".produto");
-
-  produtos.forEach(function(produto) {
-    produto.style.display = "block";
-  });
-}function filtrarProdutos(categoria) {
-  const produtos = document.querySelectorAll(".produto");
-
-  produtos.forEach(function(produto) {
-    if (produto.dataset.categoria === categoria) {
-      produto.style.display = "block";
-    } else {
-      produto.style.display = "none";
-    }
-  });
-}
-
-function mostrarTodos() {
-  const produtos = document.querySelectorAll(".produto");
-
-  produtos.forEach(function(produto) {
-    produto.style.display = "block";
-  });
-}function filtrarProdutos(categoria) {
-  const produtos = document.querySelectorAll(".produto");
-
-  produtos.forEach(function(produto) {
-    if (produto.dataset.categoria === categoria) {
-      produto.style.display = "block";
-    } else {
-      produto.style.display = "none";
-    }
-  });
-}
-
-function mostrarTodos() {
-  const produtos = document.querySelectorAll(".produto");
-
-  produtos.forEach(function(produto) {
-    produto.style.display = "block";
-  });
-}
 function filtrarProdutos(categoria) {
   const produtos = document.querySelectorAll(".produto");
 
-  for (let i = 0; i < produtos.length; i++) {
-    const categoriaProduto = produtos[i].getAttribute("data-categoria");
-
-    if (categoriaProduto === categoria) {
-      produtos[i].style.display = "block";
+  produtos.forEach(function(produto) {
+    if (produto.dataset.categoria === categoria) {
+      produto.style.display = "block";
     } else {
-      produtos[i].style.display = "none";
+      produto.style.display = "none";
     }
-  }
+  });
 }
 
 function mostrarTodos() {
   const produtos = document.querySelectorAll(".produto");
 
-  for (let i = 0; i < produtos.length; i++) {
-    produtos[i].style.display = "block";
-  }
+  produtos.forEach(function(produto) {
+    produto.style.display = "block";
+  });
 }
