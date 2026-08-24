@@ -12,7 +12,7 @@ body {
 
 header {
   text-align: center;
-  padding: 25px 15px 15px;
+  padding: 25px 15px;
   background: white;
 }
 
@@ -27,25 +27,17 @@ header p {
 }
 
 input {
-  width: 100%;
+  width: 90%;
   max-width: 500px;
   padding: 14px 18px;
   border: 1px solid #ddd;
   border-radius: 30px;
   font-size: 16px;
-  outline: none;
-}
-
-section {
-  padding: 10px 15px;
-}
-
-h2 {
-  color: #444;
 }
 
 .categorias {
   text-align: center;
+  padding: 15px;
 }
 
 .categorias button {
@@ -55,33 +47,37 @@ h2 {
   margin: 5px;
   background: #f3a6c7;
   color: white;
-  font-size: 14px;
 }
 
 .produtos {
   max-width: 600px;
   margin: auto;
+  padding: 10px 15px;
 }
 
 .produto {
   background: white;
   border-radius: 20px;
   padding: 15px;
- margin: 25px 0;
+  margin: 25px 0;
   box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.foto-produto {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff0f6;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 .foto-produto img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  border-radius: 15px;
   padding: 10px;
-}
-}
-
-.produto h3 {
-  margin-bottom: 5px;
 }
 
 .preco {
@@ -109,6 +105,7 @@ h2 {
   padding: 8px;
   background: white;
   box-shadow: 0 -3px 15px rgba(0,0,0,0.1);
+  z-index: 500;
 }
 
 .menu button {
@@ -118,19 +115,10 @@ h2 {
   font-size: 13px;
 }
 
-.menu button:first-child {
-  color: #d94f8a;
-}
-
-/* CARRINHO */
-
 .tela-carrinho {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: #fff7fb;
   z-index: 9999;
   overflow-y: auto;
@@ -143,6 +131,14 @@ h2 {
   gap: 15px;
 }
 
+.cabecalho-carrinho button {
+  background: #f3a6c7;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px 15px;
+}
+
 .item-carrinho {
   background: white;
   border-radius: 15px;
@@ -151,6 +147,14 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.item-carrinho button {
+  background: #d94f8a;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 10px;
 }
 
 .total-carrinho {
@@ -167,10 +171,13 @@ h2 {
   padding: 15px;
   border: none;
   border-radius: 25px;
+  font-size: 16px;
 }
-  <div class="foto-produto">
-  <img
-    src="https://images.pexels.com/photos/22434759/pexels-photo-22434759.jpeg?auto=compress&cs=tinysrgb&w=800"
-    alt="Bolsa Elegante"
-  >
-</div>
+
+#contadorCarrinho {
+  background: #d94f8a;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 11px;
+}
