@@ -84,4 +84,41 @@ function mostrarTodos() {
   produtos.forEach(function(produto) {
     produto.style.display = "block";
   });
+}function filtrarProdutos(categoria) {
+  const produtos = document.querySelectorAll(".produto");
+
+  produtos.forEach(function(produto) {
+    if (produto.dataset.categoria === categoria) {
+      produto.style.display = "block";
+    } else {
+      produto.style.display = "none";
+    }
+  });
 }
+
+function mostrarTodos() {
+  const produtos = document.querySelectorAll(".produto");
+
+  produtos.forEach(function(produto) {
+    produto.style.display = "block";
+  });
+}function filtrarProdutos(categoria) {
+  const produtos = document.querySelectorAll(".produto");
+
+  produtos.forEach(function(produto) {
+    if (produto.dataset.categoria === categoria) {
+      produto.style.display = "block";
+    } else {
+      produto.style.display = "none";
+    }
+  });
+}
+
+function mostrarTodos() {
+  const produtos = document.querySelectorAll(".produto");
+
+  produtos.forEach(function(produto) {
+    produto.style.display = "block";
+  });
+}
+
